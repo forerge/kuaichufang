@@ -50,17 +50,9 @@
 				<image  class="img" :src="serverImgUrl+'fangdong-gerenfuwu02.png'"></image>
 				<text class="text">业主托管</text>
 			</view>
-			<view class="grid-list grid-col-align-center" @click="wuyejiaojie">
-				<image  class="img" :src="serverImgUrl+'fangdong-gerenfuwu04.png'"></image>
-				<text class="text">物业交接</text>
-			</view>
 			<view class="grid-list grid-col-align-center" @click="renzheng">
 				<image  class="img" :src="serverImgUrl+'fangdong-gerenfuwu05.png'"></image>
 				<text class="text">我的认证</text>
-			</view>
-			<view class="grid-list grid-col-align-center" @click="qianbao">
-				<image  class="img" :src="serverImgUrl+'fangdong-gerenfuwu06.png'"></image>
-				<text class="text">我的钱包</text>
 			</view>
 		</view>
 		<radio-group>
@@ -160,16 +152,6 @@
 				    url: '../woderenzheng/woderenzheng'
 				});
 			},
-			qianbao(){
-				uni.navigateTo({
-				    url: '../wodeqianbao/wodeqianbao'
-				});
-			},
-			wuyejiaojie(){
-				uni.navigateTo({
-				    url: '../wuyejiaojie/wuyejiaojie'
-				});
-			}
 		}
 	}
 </script>

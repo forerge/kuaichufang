@@ -153,30 +153,14 @@
 					<image class="img" :src="serverImgUrl + 'peizhisheshi-15.png'"></image>
 					<text class="text">抽烟机</text>
 				</view>
-				
-				<!-- <view class="grid-list grid-col-align-center" :class="{active: house_config['yan']}">
-					<image class="img" :src="serverImgUrl + 'peizhisheshi-13.png'"></image>
-					<text class="text">阳台</text>
-				</view> -->
 			</view>
 		</view>
-		
-
-		<!--<view class="weizhi-and-zhoubian">
-			<view class="title"><text>位置及周边</text></view>
-			 地图组件 
-			<showMarkersMap latitude="30.924585" longitude="121.468585" address="运河新村" />
-		</view>-->
-
 		<view class="grid grid-col-2 brief">
 			<view class="grid-list grid-combine-col-2 grid-row-align-left-center title"><text>房源介绍</text></view>
 			<view class="grid-list grid-combine-col-2  description">
 				{{house_detail['h_content']}}
 			</view>
 		</view>
-		
-		
-		
 		<!-- 同小区房源 -->
 		<view class="housing-resource-title"><text>同小区房源</text></view>
 		<tuijianContentList :tuijianContent="tuijianContent" />
@@ -205,17 +189,6 @@
 					<view class="input-box grid-row-align-center"><input type="text" name="long" disabled :value="house_detail.h_hname" @input="o_long" placeholder="没有数据" /></view>
 				</view>
 			</view>
-			
-			<!-- <view class="grid grid-col-2  uploadimg">
-					<view class="grid-list grid-combine-col-2">
-						<text class="grid-row-align-left-center text1">现场拍照（<text class="text1-1">3-9张</text>）</text>
-						<view class="grid-row-align-center v1">
-							<view class="grid-row-align-center circle">
-								+
-							</view>
-						</view>
-					</view>
-			</view> -->
 			<view class="grid grid-col-2  uploadimg">
 					<view class="grid-list grid-combine-col-2">
 						<text class="grid-row-align-left-center text1">现场拍照（<text class="text1-1">3-9张</text>）</text>
@@ -228,18 +201,9 @@
 						</view>
 					</view>
 			</view>
-			<!-- <view class="grid-list grid-combine-col-2 grid-row-align-center upload-box">
-				<imgUpload ref="imgUploadView1" @tap="uploadImg('imgUploadView1')" path_url='id_card'>
-					<view class="upload-btn grid-row-align-center" slot="img-upload" id="imgUploadView1">
-						<text class="plus">+</text>
-					</view>
-				</imgUpload>
-			</view> -->
 			<view class="grid grid-col-2 footer">
 				<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
-					<!-- <navigator class="center" @click="golook" :url="'../yuyuefangyuan/yuyuefangyuan?id=' + house_detail['h_id']">预约房源</navigator> -->
 					<button class="center" @click="queren" >确认租房</button>
-					<text class="right" @click="hetongxiangqing">合同详情</text>
 				</view>
 			</view>
 		</view>
@@ -249,7 +213,6 @@
 <script>
 import goodsDetailsImgSlide from '@/components/dzy-goods-details-img-slide/dzy-goods-details-img-slide.vue';
 import showMarkersMap from '@/components/dzy-show-markers-map/dzy-show-markers-map.vue';
-// import tuijianContentList from '@/components/dzy-tuijian-content-list/dzy-tuijian-content-list.vue';
 import imgUpload from "@/components/dzy-img-upload/dzy-img-upload.vue";
 export default {
 	components: {
@@ -364,24 +327,6 @@ export default {
 		o_long(e){
 			this.long = e.detail.value
 		},
-		hetongxiangqing(){
-			console.log(0)
-			var list = {
-				uid:uni.getStorageSync('weijia_pro')['u_id'],
-				hid:this.house_detail.h_id,
-				huid:this.house_detail.hu_id,
-				money:this.money,
-				ymoney:this.ymoney,
-				zmoney:this.zmoney,
-				long:this.long,
-				img:this.imgSaveUrl,
-				hname:this.house_detail.h_hname
-			};
-			uni.setStorageSync('weijia_order_list', list);
-			uni.navigateTo({
-			    url: '../wodehetong/wodehetong2',
-			})
-		}
 	}
 };
 </script>

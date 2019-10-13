@@ -8,12 +8,7 @@
 				"navigationBarTitleText": "唯家首页",
 				 "enablePullDownRefresh": true
 			}
-		}, {
-			"path": "pages/appointment-order-success/appointment-order-success",
-			"style": {
-				"navigationBarTitleText": "预约成功"
-			}
-		},
+		}, 
 		{
 			"path": "pages/jiaozu-order/jiaozu-order",
 			"style": {
@@ -88,12 +83,6 @@
 			}
         }
         ,{
-            "path" : "pages/fangke-yuyue-manage/fangke-yuyue-manage",
-            "style" : {
-				"navigationBarTitleText": "预约管理"
-			}
-        }
-        ,{
             "path" : "pages/wodefabu/wodefabu",
             "style" : {
 				"navigationBarTitleText": "我的发布"
@@ -105,41 +94,6 @@
 				"navigationBarTitleText": "维修服务"
 			}
         }
-        ,{
-            "path" : "pages/wodeshoucang/wodeshoucang",
-            "style" : {
-				"navigationBarTitleText": "我的收藏"
-			}
-        },{
-            "path" : "pages/wodehetong/wodehetong1",
-            "style" : {
-				"navigationBarTitleText": "我的合同"
-			}
-        }
-        ,{
-            "path" : "pages/wodehetong/wodehetong2",
-            "style" : {
-				"navigationBarTitleText": "我的合同--基本信息"
-			}
-        },
-		{
-		    "path" : "pages/wodehetong/wodehetong-detail",
-		    "style" : {   
-				"navigationBarTitleText": "我的合同--在线预览"
-			}
-		},
-		{
-		    "path" : "pages/wodehetong/fangdonghetong",
-		    "style" : {   
-				"navigationBarTitleText": "我的合同"
-			}
-		},
-		{
-		    "path" : "pages/wodehetong/wodehetong3",
-		    "style" : {
-				"navigationBarTitleText": "我的合同"
-			}
-		}
         ,{
             "path" : "pages/shuidianjiaofei/shuidianjiaofei",
             "style" : {
@@ -201,47 +155,11 @@
 						}
         }
         ,{
-            "path" : "pages/wodeqianbao/wodeqianbao",
-            "style" : {
-							"navigationBarTitleText": "我的钱包"
-						}
-        }
-        ,{
             "path" : "pages/wodeshiyou/wodeshiyou",
             "style" : {
 							"navigationBarTitleText": "我的室友"
 						}
         }
-        ,{
-            "path" : "pages/wodetuijian/wodetuijian",
-            "style" : {
-							"navigationBarTitleText": "我的推荐"
-						}
-        }
-        ,{
-            "path" : "pages/wuyejiaojie/wuyejiaojie",
-            "style" : {
-							"navigationBarTitleText": "物业交接"
-						}
-        }
-		,{
-		    "path" : "pages/wuyejiaojie/wuyejiaojie-fangke-list",
-		    "style" : {
-							"navigationBarTitleText": "物业交接列表"
-						}
-		}
-		,{
-		    "path" : "pages/wuyejiaojie/wuyejiaojie-fangdong-list",
-		    "style" : {
-							"navigationBarTitleText": "物业交接列表"
-						}
-		}
-		,{
-		    "path" : "pages/wuyejiaojie/wuyejiaojie-shenqing",
-		    "style" : {
-							"navigationBarTitleText": "物业交接--申请"
-						}
-		}
         ,{
             "path" : "pages/yezhutuoguan/yezhutuoguan",
             "style" : {
@@ -353,11 +271,6 @@
 			"iconPath": "static/nav-bottom-center-0.png",
 			"selectedIconPath": "static/nav-bottom-center-1.png",
 			"text": "房源上传"
-		}, {
-			"pagePath": "pages/fangke-center/jump-center",
-			"iconPath": "static/nav-bottom-right-0.png",
-			"selectedIconPath": "static/nav-bottom-right-1.png",
-			"text": "我的"
 		}]
 	}
 }

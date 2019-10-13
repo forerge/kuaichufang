@@ -63,34 +63,10 @@
 			</view>
 		</view>
 		<view class="grid-list">
-			<navigator url="../fangdongweituo/fangdongweituo1" hover-class="none">
-			<image :src="serverImgUrl+'nav07.png'" ></image>
-			<text>房东委托</text>
-			</navigator>
-		</view>
-		<view class="grid-list" @click="wuyejiaojie">
-			<view hover-class="none">
-			<image :src="serverImgUrl+'nav09.png'" ></image>
-			<text>物业交接</text>
-			 </view>
-		</view>
-		<view class="grid-list">
 			<navigator url="../zhaoshiyou/zhaoshiyou" hover-class="none">
 			<image :src="serverImgUrl+'nav010.png'" ></image>
 			<text>找室友</text>
 			 </navigator>
-		</view>
-		<view class="grid-list" @click="wodehetong">
-			<view hover-class="none">
-			<image :src="serverImgUrl+'nav011.png'" ></image>
-			<text>我的合同</text> 
-			</view>
-		</view>
-		<view class="grid-list" @click="qianbao">
-			<view hover-class="none">
-			<image :src="serverImgUrl+'nav012.png'" ></image>
-			<text>我的钱包</text>
-			</view>
 		</view>
 	</view>
 	<!-- 导航栏板块 end-->
@@ -232,24 +208,6 @@
 				    url: '../weijiahaofang/weijiahaofang?state=2'
 				});
 			},
-			wodehetong(){
-				if(uni.getStorageSync('weijia_status') == false){
-					uni.navigateTo({
-					    url: '../login/login'
-					});
-				}else{
-					if(uni.getStorageSync('weijia_role') == 1){
-						uni.navigateTo({
-							url: '../wodehetong/wodehetong1'
-						});
-					}else{
-						uni.navigateTo({
-							url: '../wodehetong/fangdonghetong'
-						});
-					}
-					
-				}
-			},
 			jingjiren(){
 				if(uni.getStorageSync('weijia_status') == false){
 					uni.navigateTo({
@@ -272,35 +230,6 @@
 					});
 				}
 			},
-			qianbao(){
-				if(uni.getStorageSync('weijia_status') == false){
-					uni.navigateTo({
-					    url: '../login/login'
-					});
-				}else{
-					uni.navigateTo({
-					    url: '../wodeqianbao/wodeqianbao?id='+uni.getStorageSync('weijia_pro')['u_id']
-					});
-				}
-			},
-			wuyejiaojie(){
-				if(uni.getStorageSync('weijia_status') == false){
-					uni.navigateTo({
-					    url: '../login/login'
-					});
-				}else{
-					if(uni.getStorageSync('weijia_role')){
-						uni.navigateTo({
-							url: '../wuyejiaojie/wuyejiaojie-fangke-list'
-						});
-					}else{
-						uni.navigateTo({
-							url: '../wuyejiaojie/wuyejiaojie-fangdong-list'
-						});
-					}
-					
-				}
-			}
 		}, 
 	
 	}

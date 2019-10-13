@@ -48,14 +48,6 @@
 		<!-- 个人服务 -->
 		<columnTitle columnTitle="个人服务" borderTopColor="#fff"/>
 		<view class="grid grid-col-4 grid-fixed-width personserve">
-			<view class="grid-list grid-col-align-center" @click="hetong">
-				<image  class="img" :src="serverImgUrl+'fangke-gerenfuwu02.png'"></image>
-				<text class="text">我的合同</text>
-			</view>
-			<view class="grid-list grid-col-align-center" @click="qianbao">
-				<image  class="img" :src="serverImgUrl+'fangke-gerenfuwu03.png'"></image>
-				<text class="text">我的钱包</text>
-			</view>
 			<view class="grid-list grid-col-align-center" @click="yuanchengkaimen">
 				<image  class="img" :src="serverImgUrl+'fangke-gerenfuwu04.png'"></image>
 				<text class="text">远程开门</text>
@@ -166,19 +158,9 @@
 				    url: '../baojie-order/baojie-order?id='+uni.getStorageSync('weijia_pro')['u_id']
 				});
 			},
-			hetong(){
-				uni.navigateTo({
-				    url: '../wodehetong/wodehetong1?id='+uni.getStorageSync('weijia_pro')['u_id']
-				});
-			},
 			renzheng(){
 				uni.navigateTo({
 				    url: '../woderenzheng/woderenzheng?id='+uni.getStorageSync('weijia_pro')['u_id']
-				});
-			},
-			qianbao(){
-				uni.navigateTo({
-				    url: '../wodeqianbao/wodeqianbao?id='+uni.getStorageSync('weijia_pro')['u_id']
 				});
 			},
 			yuanchengkaimen(){
