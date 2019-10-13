@@ -230,7 +230,7 @@
 				diantiIndex:[],
 				chaoxiang:[['东','南','西','北']],
 				chaoxiangIndex:[],
-				tingshi:[['主卧','次卧'],['不开放','公用大厅'],['公用卫生间','独立卫生间卫']],
+				tingshi:[['1室','2室','3室','4室'],['1厅','2厅'],['1卫','2卫']],
 				tingshiIndex:[],
 				yuezhujin:[['押一付一','押一付三','半年付']],
 				yuezhujinIndex:[],
@@ -322,8 +322,8 @@
 				this.house_data.house.space = e.detail.value.space;
 				this.house_data.house.addr = e.detail.value.addr;
 				this.house_data.house.shi = this.tingshiIndex[0]+1;
-				this.house_data.house.ting = this.tingshiIndex[1];
-				this.house_data.house.wei = this.tingshiIndex[2];
+				this.house_data.house.ting = this.tingshiIndex[1]+1;
+				this.house_data.house.wei = this.tingshiIndex[2]+1;
 				this.house_data.house.xiang = this.chaoxiang[0][this.chaoxiangIndex[0]];
 				this.house_data.house.floor = parseInt(this.loucengIndex[0])-1;
 				this.house_data.house.car =  this.cheweiIndex[0];
@@ -334,7 +334,7 @@
 				this.house_data.house.h_city = this.city[1];
 				this.house_data.house.h_area = this.city[2];
 				this.house_data.house.in_money = this.checkedVal;
-				this.house_data.house.state = 2;
+				this.house_data.house.state = 1;
 				this.house_data.house.uid = this.u_id;
 				this.house_data.house.metro_no = this.ditieIndex[0];
 				this.house_data.house.metro_length = e.detail.value.metro_length;
@@ -347,7 +347,7 @@
 				
 				uni.setStorageSync('weijia_house',this.house_data)
 				uni.navigateTo({
-				    url: '../zhengzhufabu/zhengzhufabu2'
+				    url: './zhengzhufabu2'
 				});
 			},
 			uploadImg(eleid){	//调用子组件上传函数

@@ -35,7 +35,7 @@
 		methods: {
 			register(){
 				uni.redirectTo({
-				    url: '../register/register'
+				    url: '../login/register'
 				});
 			},
 			backpwd(){

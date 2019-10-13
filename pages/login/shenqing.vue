@@ -3,7 +3,12 @@
 		<form @submit="shenqing">
 			<view class="grid grid-col-2 content">
 				<view class="grid-list grid-combine-col-2 grid-row-align-center-bottom title">
-						<text>免费加入经纪人</text>
+						<text>免费加入</text>
+				</view>
+				<view class="grid-list grid-combine-col-2 grid-row-align-center inputFrame">
+					<multiSelectorPicker :range="roleSelect" @bindChange="bindChange($event,'roleSelect')">
+						<input slot="html" class="input" name="name" type="text" :value="roleSelect[0][roleSelectIndex[0]]"  placeholder="角色选择" style="text-align: center;"/>
+					</multiSelectorPicker>
 				</view>
 				<view class="grid-list grid-combine-col-2 grid-row-align-center inputFrame">
 						<input class="input" name="name" type="text" value=""  placeholder="姓名："/>
@@ -18,8 +23,8 @@
 				</view> -->
 				
 				<view class="grid-list grid-combine-col-2 grid-col-align-left-space-between upload-title">
-					<text class="text1" >请上传工作证</text>
-					<text class="text2" >（至少请上传3张图片，禁止含有第三方水印照片）</text>
+					<text class="text1" >请上传相关证件照片</text>
+					<text class="text2" >（身份证/工作证）</text>
 				</view>
 				<view class="grid-list grid-combine-col-2 grid-row-align-center upload-box">
 					<imgUpload ref="imgUploadView1" @tap="uploadImg('imgUploadView1')" path_url='id_card'>
@@ -41,10 +46,12 @@
 <script>
 	import provinceCityArea from "@/components/dzy-province-city-area/dzy-province-city-area.vue";
 	import imgUpload from "@/components/dzy-img-upload/dzy-img-upload.vue";
+	import multiSelectorPicker from "@/components/dzy-multiSelector-picker/dzy-multiSelector-picker.vue";
 	export default {
 		components:{
 			provinceCityArea,
-			imgUpload
+			imgUpload,
+			multiSelectorPicker
 		},
 
 		data() {
@@ -55,11 +62,13 @@
 				address:'点击选择地址',
 				u_id:'',
 				imgSaveUrl:{},
-				model:'shenqing'
+				model:'shenqing',
+				roleSelect:[['房东','职业房东','职业经纪人']],
+				roleSelectIndex:[]
 			};
 		},
 		onLoad(e) {
-			this.u_id = e.id;
+			this.u_id = uni.getStorageSync('weijia_pro')['u_id'];
 		},
 		methods: {
 			provinceCityAreaChange: function (data) {
@@ -67,18 +76,18 @@
 				//console.log(data);
 			},
 			shenqing(e){
-				console.log(this.imgSaveUrl);
+				// console.log(this.roleSelectIndex[0]);
 				uni.request({
 					url: this.serverApiUrl+'home/shenqing/shenqing', //请求url
 					method: 'POST',               //请求方式 
-					data: {id:this.u_id,name:e.detail.value.name,ma:e.detail.value.ma,level:2,img:this.imgSaveUrl,model:this.model},                     //传递的数据
+					data: {id:this.u_id,name:e.detail.value.name,ma:e.detail.value.ma,level:this.roleSelectIndex[0]+1,img:this.imgSaveUrl,model:this.model},                     //传递的数据
 					success: res => {   //成功执行回调函数
 						if(res.statusCode==200){
-							uni.switchTab({
-							    url: '/pages/index/index'
+							uni.redirectTo({
+							    url: './empty?message='+'您的申请已提交，请您耐心等待确认'
 							});
 						}else{ 
-							// console.log(res);
+						
 						}
 						
 					},
@@ -92,6 +101,15 @@
 			//获取上传图片的存储路径
 			getImgSaveUrl(){
 				console.log(this.imgSaveUrl);
+			},
+			bindChange: function(e,title) {
+				switch(title) {
+				     case 'roleSelect':
+				        this.roleSelectIndex=e;
+				        break;
+				     default:
+				        break;
+				} 
 			}
 		}
 	}

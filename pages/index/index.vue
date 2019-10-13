@@ -45,10 +45,16 @@
 			</view>
 		</view>
 		<view class="grid-list">
-			<navigator url="../fangyuanshangchuan/fangyuanshangchuan" open-type="switchTab" hover-class="none">
-			<image :src="serverImgUrl+'nav04.png'" ></image>
-			<text>上传房源</text>
+			<navigator url="../zhaoshiyou/zhaoshiyou" hover-class="none">
+			<image :src="serverImgUrl+'nav010.png'" ></image>
+			<text>找室友</text>
 			 </navigator>
+		</view>
+		<view class="grid-list" @click="fangdong">
+			<view hover-class="none">
+				<image :src="serverImgUrl+'nav05.png'" ></image>
+				<text>房东</text>
+			</view>
 		</view>
 		<view class="grid-list" @click="zhiyefangdong">
 			<view hover-class="none">
@@ -56,16 +62,16 @@
 				<text>职业房东</text>
 			</view>
 		</view>
-		<view class="grid-list" @click="jingjiren" >
+		<view class="grid-list" @click="zhiyejingjiren" >
 			<view hover-class="none">
 				<image :src="serverImgUrl+'nav06.png'" ></image>
 				<text>职业经纪人</text>
 			</view>
 		</view>
 		<view class="grid-list">
-			<navigator url="../zhaoshiyou/zhaoshiyou" hover-class="none">
-			<image :src="serverImgUrl+'nav010.png'" ></image>
-			<text>找室友</text>
+			<navigator url="../fangyuanshangchuan/fangyuanshangchuan" open-type="switchTab" hover-class="none">
+			<image :src="serverImgUrl+'nav04.png'" ></image>
+			<text>上传房源</text>
 			 </navigator>
 		</view>
 	</view>
@@ -208,14 +214,22 @@
 				    url: '../weijiahaofang/weijiahaofang?state=2'
 				});
 			},
-			jingjiren(){
+			zhiyejingjiren(){
 				if(uni.getStorageSync('weijia_status') == false){
 					uni.navigateTo({
 					    url: '../login/login'
 					});
+				}else if(uni.getStorageSync('weijia_pro')['u_two'] != 1 && uni.getStorageSync('weijia_pro')['u_three'] != 1 && uni.getStorageSync('weijia_pro')['u_four'] != 1 ){
+					uni.navigateTo({
+					    url: "../login/shenqing"
+					});
+				}else if(uni.getStorageSync('weijia_pro')['u_two'] > 0 || uni.getStorageSync('weijia_pro')['u_three'] > 0){
+					uni.navigateTo({
+					    url: "../login/empty?message="+'您不是此角色'
+					});
 				}else{
 					uni.navigateTo({
-						url: '../jingjirenjiaru/jingjirenjiaru?id='+uni.getStorageSync('weijia_pro')['u_id']
+					    url: "../weijiahaofang/wodefabu?role=4"
 					});
 				}
 			},
@@ -224,9 +238,36 @@
 					uni.navigateTo({
 					    url: '../login/login'
 					});
+				}else if(uni.getStorageSync('weijia_pro')['u_two'] != 1 && uni.getStorageSync('weijia_pro')['u_three'] != 1 && uni.getStorageSync('weijia_pro')['u_four'] != 1 ){
+					uni.navigateTo({
+					    url: "../login/shenqing"
+					});
+				}else if(uni.getStorageSync('weijia_pro')['u_two'] > 0 || uni.getStorageSync('weijia_pro')['u_four'] > 0 ){
+					uni.navigateTo({
+					    url: "../login/empty?message="+'您不是此角色'
+					});
 				}else{
 					uni.navigateTo({
-						url: '../zhiyefangdongruzhu/zhiyefangdongruzhu?id='+uni.getStorageSync('weijia_pro')['u_id']
+					    url: "../weijiahaofang/wodefabu?role=3"
+					});
+				}
+			},
+			fangdong(){
+				if(uni.getStorageSync('weijia_status') == false){
+					uni.navigateTo({
+					    url: '../login/login'
+					});
+				}else if(uni.getStorageSync('weijia_pro')['u_two'] != 1 || uni.getStorageSync('weijia_pro')['u_three'] != 1 || uni.getStorageSync('weijia_pro')['u_four'] != 1 ){
+					uni.navigateTo({
+					    url: "../login/shenqing"
+					});
+				}else if(uni.getStorageSync('weijia_pro')['u_four'] > 0 || uni.getStorageSync('weijia_pro')['u_three'] > 0){
+					uni.navigateTo({
+					    url: "../login/empty?message="+'您不是此角色'
+					});
+				}else{
+					uni.navigateTo({
+					    url: "../weijiahaofang/wodefabu?role=2"
 					});
 				}
 			},

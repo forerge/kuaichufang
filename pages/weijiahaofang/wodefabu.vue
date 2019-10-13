@@ -82,7 +82,7 @@
 				serverImgUrl:this.$commonConfig.serverImgUrl,
 				curIndex:0, //tab索引
 				//我的发布
-				tuijianContent:[]
+				tuijianContent:[],
 			};
 		},
 		created(){
@@ -124,8 +124,23 @@
 					}
 				]
 			},
-		onLoad() {
-			
+		onLoad(e) {
+			this.role = e.role;
+			uni.request({
+				url: this.serverApiUrl+'home/house/kuai_wodefabu', //请求url
+				method: 'POST',               //请求方式 
+				data: {
+					uid:uni.getStorageSync('weijia_pro')['u_id'],
+					role:e.role
+				},                     //传递的数据
+				success: res => {   //成功执行回调函数
+					if(res.statusCode==200){
+						this.tuijianContent = res.data;
+					}
+				},
+				fail: () => {},
+				complete: () => {}
+			});
 		},
 		methods:{
 			//tab切换
