@@ -182,12 +182,6 @@
 				"navigationBarTitleText": "房源详情"
 			}
         }
-		,{
-		    "path" : "pages/fangyuanxiangqing/fangyuanxiangqing2",
-		    "style" : {
-				"navigationBarTitleText": "房源详情"
-			}
-		}
         ,{
             "path" : "pages/jingjirenjiaru/jingjirenjiaru",
             "style" : {
@@ -223,18 +217,7 @@
             "style" : {
 							"navigationBarTitleText": "我的推荐"
 						}
-        },{
-            "path" : "pages/fangke-yuyue-manage/wodeyuyue",
-            "style" : {
-							"navigationBarTitleText": "我的预约"
-						}  
         }
-		,{
-		    "path" : "pages/wodeyuyue/fangdongyuyue",
-		    "style" : {
-							"navigationBarTitleText": "房东预约"
-						}
-		}
         ,{
             "path" : "pages/wuyejiaojie/wuyejiaojie",
             "style" : {
@@ -332,14 +315,6 @@
 				"enablePullDownRefresh": true
 			}
         }
-        
-        ,{
-            "path" : "pages/wodeyuyue/wodeyuyue",
-            "style" : {
-				"navigationBarTitleText": "我的预约"
-			}
-        }
-        
         ,{
             "path" : "pages/querenzufang/querenzufang",
             "style" : {

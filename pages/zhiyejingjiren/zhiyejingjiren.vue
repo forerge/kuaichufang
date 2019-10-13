@@ -43,10 +43,6 @@
 		<!-- 个人服务 -->
 		<columnTitle columnTitle="个人服务" borderTopColor="#fff"/>
 		<view class="grid grid-col-4 grid-fixed-width personserve">
-			<view class="grid-list grid-col-align-center" @click="wodeyuyue">
-				<image  class="img" :src="serverImgUrl+'fangke-gerenfuwu01.png'"></image>
-				<text class="text">我的预约</text>
-			</view>
 			<view class="grid-list grid-col-align-center" @click="wodehetong">
 				<image  class="img" :src="serverImgUrl+'fangke-gerenfuwu02.png'"></image>
 				<text class="text">我的合同</text>
@@ -59,26 +55,6 @@
 				<image  class="img" :src="serverImgUrl+'fangke-gerenfuwu04.png'"></image>
 				<text class="text">远程开门</text>
 			</view>
-			<!--<view class="grid-list grid-col-align-center">
-				<image  class="img" :src="serverImgUrl+'fangke-gerenfuwu05.png'"></image>
-				<text class="text">我的福利券</text>
-			</view>
-			 <view class="grid-list grid-col-align-center">
-				<image  class="img" :src="serverImgUrl+'fangke-gerenfuwu06.png'"></image>
-				<text class="text">我的水电</text>
-			</view>
-			<view class="grid-list grid-col-align-center">
-				<image  class="img" :src="serverImgUrl+'fangke-gerenfuwu07.png'"></image>
-				<text class="text">维修服务</text>
-			</view>
-			<view class="grid-list grid-col-align-center">
-				<image  class="img" :src="serverImgUrl+'fangke-gerenfuwu08.png'"></image>
-				<text class="text">保洁服务</text>
-			</view> 
-			<view class="grid-list grid-col-align-center" @click="daoqijiaozu">
-				<image  class="img" :src="serverImgUrl+'fangke-gerenfuwu09.png'"></image>
-				<text class="text">到期交租</text>
-			</view>-->
 			<view class="grid-list grid-col-align-center">
 				<image  class="img" :src="serverImgUrl+'fangke-gerenfuwu010.png'"></image>
 				<text class="text">找室友</text>
@@ -94,18 +70,6 @@
 		</view>
 		<radio-group>
 		<view class="grid grid-col-2 roleSelect">
-			<!-- <view class="grid-list grid-row-align-left-center">
-				职业房东
-			</view>
-			<view class="grid-list grid-col-align-right-center">
-					<radio value="v1"  color="#F97F36" />
-			</view>
-			<view class="grid-list grid-row-align-left-center">
-				经纪人
-			</view>
-			<view class="grid-list grid-col-align-right-center">
-				<radio value="v2"  color="#F97F36" />
-			</view> -->
 			<view class="grid-list grid-combine-col-2 grid-col-align-left-center" @tap="showMask">
 				联系客服
 			</view>
@@ -185,11 +149,6 @@
 			//显示切换身份弹框
 			showRoleTurn(){
 				this.roleTurn=true;
-			},
-			wodeyuyue(){
-				uni.navigateTo({
-				    url: '../wodeyuyue/fangdongyuyue'
-				});
 			},
 			wodehetong(){
 				if(this.role == 1){

@@ -45,10 +45,6 @@
 				<text class="text1">入住日期：</text>
 				<text class="text2">即可入住</text>
 			</view>
-			<!-- <view class="grid-list grid-combine-col-2 grid-row-align-left-center base-parameter">
-				<text class="text1">房屋状态：</text>
-				<text class="text2">可预约</text>
-			</view> -->
 		</view>
 		<!-- 入驻要求 -->
 		<view class="ruzhuyaoqiu">
@@ -121,10 +117,6 @@
 					<image class="img" :src="serverImgUrl + 'peizhisheshi-07.png'"></image>
 					<text class="text">冰箱</text>
 				</view>
-				<!-- <view class="grid-list grid-col-align-center" :class="{active: house_detail['h_config']['nuanqi']}">
-					<image class="img" :src="serverImgUrl + 'peizhisheshi-08.png'"></image>
-					<text class="text">暖气</text>
-				</view> -->
 				<view class="grid-list grid-col-align-center" :class="{active: house_detail['h_config']['reshuiqi']}">
 					<image class="img" :src="serverImgUrl + 'peizhisheshi-09.png'"></image>
 					<text class="text">热水器</text>
@@ -161,12 +153,6 @@
 			</view>
 		</view>
 
-		<!-- <view class="weizhi-and-zhoubian">
-			<view class="title"><text>位置及周边</text></view>
-			地图组件 
-			<showMarkersMap latitude="30.924585" longitude="121.468585" address="运河新村" />
-		</view> -->
-
 		<view class="grid grid-col-2 brief">
 			<view class="grid-list grid-combine-col-2 grid-row-align-left-center title"><text>房源介绍</text></view>
 			<view class="grid-list grid-combine-col-2  description">
@@ -179,12 +165,6 @@
 		<!-- 底部 -->
 		<view class="grid grid-col-2 footer">
 			<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
-				<view class="left grid-col-align-center">
-					<image class="img" :src="serverImgUrl + 'xinxing.png'"></image>
-					<text>收藏</text>
-				</view>
-				<!-- <navigator class="center" @click="golook" :url="'../yuyuefangyuan/yuyuefangyuan?id=' + house_detail['h_id']">预约房源</navigator> -->
-				<view class="center" @click="golook" >预约房源</view>
 				<text class="right">电话咨询</text>
 			</view>
 		</view>
@@ -193,26 +173,20 @@
 
 <script>
 import goodsDetailsImgSlide from '@/components/dzy-goods-details-img-slide/dzy-goods-details-img-slide.vue';
-import showMarkersMap from '@/components/dzy-show-markers-map/dzy-show-markers-map.vue';
 import tuijianContentList from '@/components/dzy-tuijian-content-list/dzy-tuijian-content-list.vue';
 export default {
 	components: {
 		goodsDetailsImgSlide,
-		showMarkersMap,
 		tuijianContentList
 	},
 	data() {
 		return {
 			serverImgUrl: this.$commonConfig.serverImgUrl,
 			serverApiUrl: this.$commonConfig.serverApiUrl,
-
 			//头部滑块图片url
 			goodsDetailsImg: [],
 			house_detail: [], //房源详情参数
 			tuijianContent: [], //推荐内容
-			// house_config: {}, //房源设施
-			// house_inmoney: [], //房源包含费用
-			// house_ask: [] //房源包含费用
 		};
 	},
 	//2.页面加载完成、页面卸载事件
@@ -226,45 +200,15 @@ export default {
 				//成功执行回调函数
 				if (res.statusCode == 200) {
 					console.log(res.data);
-					// console.log(JSON.parse(res.data.h_config));
 					this.tuijianContent = res.data.same;
-					// delete res.data.same;
 					this.goodsDetailsImg = res.data.h_uploads;
-					// this.house_config = JSON.parse(res.data.h_config);
-					// console.log(this.house_config)
-					// this.house_inmoney = JSON.parse(res.data.h_inmoney);
-					// this.house_ask = JSON.parse(res.data.h_ask);
-					// delete res.data.h_config;
-					// delete res.data.h_ask;
-					// delete res.data.inmoney;
 					this.house_detail = res.data;
-				} else {
-					// console.log(res);
-				}
+				} 
 			},
 			fail: () => {},
 			complete: () => {}
 		});
-		// console.log(this.house_config)
 	},
-	methods: {
-		golook(){
-			var weijia_status = uni.getStorageSync('weijia_status');
-			if(weijia_status == false){
-				uni.navigateTo({
-				    url: '../login/login'
-				});
-			}else{
-				// console.log(this.house_detail['h_id']);
-				uni.navigateTo({
-					
-					url: "../yuyuefangyuan/yuyuefangyuan?id="+this.house_detail['h_id']
-				});
-			}
-			
-		},
-		
-	}
 };
 </script>
 

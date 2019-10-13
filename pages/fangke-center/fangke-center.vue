@@ -48,10 +48,6 @@
 		<!-- 个人服务 -->
 		<columnTitle columnTitle="个人服务" borderTopColor="#fff"/>
 		<view class="grid grid-col-4 grid-fixed-width personserve">
-			<view class="grid-list grid-col-align-center" @click="wodeyuyue">
-				<image  class="img" :src="serverImgUrl+'fangke-gerenfuwu01.png'"></image>
-				<text class="text">我的预约</text>
-			</view>
 			<view class="grid-list grid-col-align-center" @click="hetong">
 				<image  class="img" :src="serverImgUrl+'fangke-gerenfuwu02.png'"></image>
 				<text class="text">我的合同</text>
@@ -99,18 +95,6 @@
 		</view>
 		<radio-group>
 		<view class="grid grid-col-2 roleSelect">
-			<!-- <view class="grid-list grid-row-align-left-center">
-				职业房东
-			</view>
-			<view class="grid-list grid-col-align-right-center">
-					<radio value="v1"  color="#F97F36" />
-			</view>
-			<view class="grid-list grid-row-align-left-center">
-				经纪人
-			</view>
-			<view class="grid-list grid-col-align-right-center">
-				<radio value="v2"  color="#F97F36" />
-			</view> -->
 			<view class="grid-list grid-combine-col-2 grid-col-align-left-center" @tap="showMask">
 				联系客服
 			</view>
@@ -176,11 +160,6 @@
 			//显示切换身份弹框
 			showRoleTurn(){
 				this.roleTurn=true;
-			},
-			wodeyuyue(){
-				uni.navigateTo({
-				    url: '../wodeyuyue/wodeyuyue?id='+uni.getStorageSync('weijia_pro')['u_id']
-				});
 			},
 			baojie(){
 				uni.navigateTo({

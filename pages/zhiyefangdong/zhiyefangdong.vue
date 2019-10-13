@@ -50,10 +50,6 @@
 				<image  class="img" :src="serverImgUrl+'fangdong-gerenfuwu02.png'"></image>
 				<text class="text">业主托管</text>
 			</view>
-			<view class="grid-list grid-col-align-center" @click="wodeyuyue">
-				<image  class="img" :src="serverImgUrl+'fangdong-gerenfuwu03.png'"></image>
-				<text class="text">我的预约</text>
-			</view>
 			<view class="grid-list grid-col-align-center" @click="wuyejiaojie">
 				<image  class="img" :src="serverImgUrl+'fangdong-gerenfuwu04.png'"></image>
 				<text class="text">物业交接</text>
@@ -69,18 +65,6 @@
 		</view>
 		<radio-group>
 		<view class="grid grid-col-2 roleSelect">
-			<!-- <view class="grid-list grid-row-align-left-center">
-				职业房东
-			</view>
-			<view class="grid-list grid-col-align-right-center">
-					<radio value="v1"  color="#F97F36" />
-			</view>
-			<view class="grid-list grid-row-align-left-center">
-				经纪人
-			</view>
-			<view class="grid-list grid-col-align-right-center">
-				<radio value="v2"  color="#F97F36" />
-			</view> -->
 			<view class="grid-list grid-combine-col-2 grid-col-align-left-center" @tap="showMask">
 				联系客服
 			</view>
@@ -170,11 +154,6 @@
 			//显示切换身份弹框
 			showRoleTurn(){
 				this.roleTurn=true;
-			},
-			wodeyuyue(){
-				uni.navigateTo({
-				    url: '../wodeyuyue/fangdongyuyue'
-				});
 			},
 			renzheng(){
 				uni.navigateTo({
