@@ -1,0 +1,151 @@
+/* 初始化字体大小 */
+view{
+	font-size:$uni-font-size-base;
+} 
+image{will-change: transform}
+button{
+	line-height:normal;
+}
+button:after {
+	border:none;
+}
+/* 遮罩 */
+.mask{
+	height:100%;
+	width:100%;
+	background: rgba(0,0,0,0.5);
+	position: fixed;
+	left:0;
+	top:0;
+	z-index: 999;
+}
+/* 项目九宫格位置 */
+// 行方向项目
+// 左上
+.row-items-left-top{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-satrt;
+  justify-content:flex-satrt;
+}
+// 顶居中
+.row-items-top-center{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content:center;
+}
+// 右上
+.row-items-right-top{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content:flex-end;
+}
+// 左居中
+.row-items-left-center {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content:flex-start;
+}
+// 中间居中
+.row-items-center{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content:center;
+}
+// 右居中
+.row-items-right-center{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content:flex-end;
+}
+// 左下
+.row-items-left-bottom{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content:flex-start;
+}
+// 下居中
+.row-items-bottom-center{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content:center;
+}
+// 右下
+.row-items-right-bottom{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content:flex-end;
+}
+
+// 列方向项目
+// 左上
+.col-items-left-top{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-satrt;
+  justify-content:flex-satrt;
+}
+// 顶居中
+.col-items-top-center{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:flex-start;
+}
+// 右上
+.col-items-right-top{
+  display: flex;
+   flex-direction: column;
+  align-items:flex-end;
+  justify-content:flex-start;
+}
+// 左居中
+.col-items-left-center {
+  display: flex;
+   flex-direction: column;
+  align-items:flex-start;
+  justify-content:center;
+}
+// 中间居中
+.col-items-center{
+  display: flex;
+   flex-direction: column;
+  align-items: center;
+  justify-content:center;
+}
+// 右居中
+.col-items-right-center{
+  display: flex;
+  flex-direction: column;
+  align-items:flex-end;
+  justify-content: center;
+}
+// 左下
+.col-items-left-bottom{
+  display: flex;
+   flex-direction: column;
+  align-items:flex-start;
+  justify-content:flex-end;
+}
+// 下居中
+.col-items-bottom-center{
+  display: flex;
+   flex-direction: column;
+  align-items:center;
+  justify-content:flex-end;
+}
+// 右下
+.col-items-right-bottom{
+  display: flex;
+   flex-direction: column;
+  align-items:flex-end;
+  justify-content:flex-end;
+}

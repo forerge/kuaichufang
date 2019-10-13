@@ -1,0 +1,37 @@
+.grid.pro-order{
+	padding:1em;
+	width:90%;
+	margin:1em auto 1em;
+	border:1px solid #F1F1F1;
+	border-radius: 8px;
+	box-shadow: 2px 2px 5px #ccc;
+	.grid-list{
+	.col1.img{
+		width:226rpx;
+		height:154rpx;
+		border-radius: 20rpx;
+	}
+	.col2{
+		padding-left:1em;
+		&.row2{
+			.t1{
+			color:#A6A6A6;
+			}
+			.t2{
+				font-size:$uni-font-size-sm;
+			}
+		}
+		&.row3{
+			.t1{
+			color:#C40000;
+			}
+			.t2{
+				background:#FDE648;
+				padding:3px 12px;
+				border-radius: 6px;
+				font-size:$uni-font-size-sm;
+			}
+		}
+	}
+	}
+}

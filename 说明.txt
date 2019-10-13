@@ -1,0 +1,5 @@
+全局变量
+weijia_pro              当前登录用户的信息
+weijia_status           当前登录状态      true / false
+weijia_role             当前操作角色      1：租客，2：房东，3：职业房东，4：职业经纪人
+weijia_order_list       确认租房页填写的信息

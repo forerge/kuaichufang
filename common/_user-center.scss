@@ -1,0 +1,174 @@
+.user-base-msg{
+		$height:200px;
+		height:$height;
+		position: relative;
+		&.fangdong{
+			background: #65B5F2;
+			.water-group{
+				background: linear-gradient(to top, #0A8BED, #65B5F2);
+			}
+			.turnBtn{
+				color:#1B91EE;
+			}
+		}
+		&.fangke{
+			background: rgb(251,228,62);
+			.water-group{
+				background: linear-gradient(to top, rgba(252,147,56,0.5),rgba(252,147,56,0.2));
+			}
+			.turnBtn{
+				color:#FC8D27;
+			}
+		}
+		.grid{
+			position: absolute;
+			z-index:1;
+			width:100%;
+		.grid-list{
+			height:$height !important;
+			&:nth-child(1){
+				 .img{
+					width:150rpx;
+					height:150rpx;
+					border-radius: 75px;
+					margin:0 1em;
+					}
+				.text{
+					
+				}
+			}
+			.turnBtn{
+				width:200rpx;
+				height:66rpx;
+				text-align: center;
+				line-height:65rpx;
+				border-radius: 33px 0 0 33px;
+				background: #fff;
+			}
+			}
+		}
+		
+		.water-group{
+			position: absolute;
+			bottom:0;
+			height:110px;
+			width: 100%;
+			overflow: hidden;
+			// background: linear-gradient(to top, #0A8BED, #65B5F2);
+		}
+		.water-group .water{
+			position: absolute;
+			width: 200%;
+			height:100%;
+			background-size: 50% 100%;
+		}
+		.water-group .water1{
+			bottom:35px;
+			left: -100%;
+			opacity: 0.2;
+			animation: water-right 20s infinite linear;
+		}
+		.water-group .water2{
+			bottom:45px;
+			left: 0;
+			opacity: 0.3;
+			animation: water-left 30s infinite linear;
+		}
+		.water-group .water3{
+			bottom:55px;
+			left: -100%;
+			animation: water-right 40s infinite linear;
+		}
+		@keyframes water-right{
+			0% {
+				transform: translateX(0) translateZ(0) scaleY(1)
+			}
+			50% {
+				transform: translateX(25%) translateZ(0) scaleY(0.85)
+			}
+			100% {
+				transform: translateX(50%) translateZ(0) scaleY(1)
+			}
+		}
+		@keyframes water-left{
+			from{
+				transform: translateX(0%);
+			}
+			to{
+				transform: translateX(-50%);
+			}
+		}
+}
+.user-record{
+		width:90% !important;
+		margin:-2em auto 0;
+		box-shadow: 2px 2px 5px #ccc;
+		position: relative;
+		z-index:2;
+		background:#fff;
+		.grid-list{
+			height: 140rpx !important;
+			.title{
+				color:#A8A8A8;
+			}
+		}
+	}
+	.personserve{
+		.grid-list{
+			height: 150rpx !important;
+			.img{
+				width:35rpx;
+				height:35rpx;
+			}
+			.text{
+				font-size:$uni-font-size-sm;
+				margin-top:1em;
+			}
+		}
+	}
+	.roleSelect{
+		border-top:1em solid #EDEBEB;
+		margin-bottom:100rpx;
+		.grid-list{
+			height: 90rpx !important;
+			border-bottom:1px solid #E8E8E8;
+			&:nth-child(2n-1){
+				padding-left:2em;
+			}
+			&:nth-child(2n){
+				padding-right:2em;
+			}
+		}
+	}
+	
+// 客服弹框
+.mask.kefu{
+	display: none;
+}
+.mask.kefu.active{
+	display: block;
+}
+.contact-waiter{
+	$first-child-height:90px;
+	$not-first-child-height:40px;
+	position: absolute;
+	left:0;
+	right:0;
+	top:0;
+	bottom:0;
+	height:$first-child-height + $not-first-child-height;
+	width:70% !important;
+	margin:auto;
+	background:#fff;
+	.grid-list:first-child{
+		height:$first-child-height !important;
+		border-bottom:1px solid #F3F3F3;
+	}
+	.grid-list:not(:first-child){
+		height:$not-first-child-height !important;
+		color:#FBE752;
+	}
+	.grid-list:nth-child(2){
+		border-right:1px solid #F3F3F3;
+	}
+}

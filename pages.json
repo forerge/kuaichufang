@@ -1,0 +1,388 @@
+{
+	//0.模式配置，仅开发期间生效，配置好后，保存。然后进入微信小程序开发者工具，在编译选项中，选择这里的创建的”模式名称“即可
+	//1.页面路由绑定
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "唯家首页",
+				 "enablePullDownRefresh": true
+			}
+		}, {
+			"path": "pages/appointment-order-success/appointment-order-success",
+			"style": {
+				"navigationBarTitleText": "预约成功"
+			}
+		},
+		{
+			"path": "pages/jiaozu-order/jiaozu-order",
+			"style": {
+				"navigationBarTitleText": "交租"
+			}
+		},
+
+		{
+			"path": "pages/baojie-order/baojie-order",
+			"style": {
+				"navigationBarTitleText": "保洁"
+			}
+		},
+		{
+			"path": "pages/test/test",
+			"style": {
+				"navigationBarTitleText": "测试"
+			}
+		}, {
+			"path": "pages/fangyuanshangchuan/fangyuanshangchuan",
+			"style": {
+				"navigationBarTitleText": "房源上传"
+			}
+		},
+		{
+			"path": "pages/zhengzhufabu/zhengzhufabu",
+			"style": {
+				"navigationBarTitleText": "整租发布"
+			}
+		}, 
+		{
+			"path": "pages/zhengzhufabu/hezufabu",
+			"style": {
+				"navigationBarTitleText": "合租发布"
+			}
+		}, 
+		{
+			"path": "pages/zhengzhufabu/fangdongweituo",
+			"style": {
+				"navigationBarTitleText": "房东委托"
+			}
+		}
+	    ,{
+            "path" : "pages/fangdong-center/fangdong-center",
+            "style" : {
+				"navigationBarTitleText": "个人中心——房东"
+			}
+        }
+        ,{
+            "path" : "pages/zhaoshiyou/zhaoshiyou",
+            "style" : {
+				"navigationBarTitleText": "找室友"
+			}
+        }
+        ,{
+            "path" : "pages/fangke-center/fangke-center",
+            "style" : {
+				"navigationBarTitleText": "个人中心——房客",
+				"enablePullDownRefresh": true
+			}
+        }
+		,{
+		    "path" : "pages/fangke-center/jump-center",
+		    "style" : {
+				"navigationBarTitleText": ""
+			}
+		}
+        ,{
+            "path" : "pages/yuanchengkaimen/yuanchengkaimen",
+            "style" : {
+				"navigationBarTitleText": "远程开门"
+			}
+        }
+        ,{
+            "path" : "pages/fangke-yuyue-manage/fangke-yuyue-manage",
+            "style" : {
+				"navigationBarTitleText": "预约管理"
+			}
+        }
+        ,{
+            "path" : "pages/wodefabu/wodefabu",
+            "style" : {
+				"navigationBarTitleText": "我的发布"
+			}
+        }
+        ,{
+            "path" : "pages/weixiufuwu/weixiufuwu",
+            "style" : {
+				"navigationBarTitleText": "维修服务"
+			}
+        }
+        ,{
+            "path" : "pages/wodeshoucang/wodeshoucang",
+            "style" : {
+				"navigationBarTitleText": "我的收藏"
+			}
+        },{
+            "path" : "pages/wodehetong/wodehetong1",
+            "style" : {
+				"navigationBarTitleText": "我的合同"
+			}
+        }
+        ,{
+            "path" : "pages/wodehetong/wodehetong2",
+            "style" : {
+				"navigationBarTitleText": "我的合同--基本信息"
+			}
+        },
+		{
+		    "path" : "pages/wodehetong/wodehetong-detail",
+		    "style" : {   
+				"navigationBarTitleText": "我的合同--在线预览"
+			}
+		},
+		{
+		    "path" : "pages/wodehetong/fangdonghetong",
+		    "style" : {   
+				"navigationBarTitleText": "我的合同"
+			}
+		},
+		{
+		    "path" : "pages/wodehetong/wodehetong3",
+		    "style" : {
+				"navigationBarTitleText": "我的合同"
+			}
+		}
+        ,{
+            "path" : "pages/shuidianjiaofei/shuidianjiaofei",
+            "style" : {
+				"navigationBarTitleText": "水电缴费"
+			}
+        }
+        ,{
+            "path" : "pages/yuyuefangyuan/yuyuefangyuan",
+            "style" : {
+				"navigationBarTitleText": "预约房源"
+			}
+        }
+        ,{
+            "path" : "pages/weijiahaofang/weijiahaofang",
+            "style" : {
+				"navigationBarTitleText": "唯家好房"
+			}
+        }
+        ,{
+            "path" : "pages/fuliquan/fuliquan-unused",
+            "style" : {
+				"navigationBarTitleText": "我的福利券"
+			}
+        }
+        ,{
+            "path" : "pages/wodejiankong/wodejiankong",
+            "style" : {
+				"navigationBarTitleText": "我的监控"
+			}
+        }
+        ,{
+            "path" : "pages/woderenzheng/woderenzheng",
+            "style" : {
+				"navigationBarTitleText": "我的认证"
+			}
+        }
+        ,{
+            "path" : "pages/fangyuanxiangqing/fangyuanxiangqing",
+            "style" : {
+				"navigationBarTitleText": "房源详情"
+			}
+        }
+		,{
+		    "path" : "pages/fangyuanxiangqing/fangyuanxiangqing2",
+		    "style" : {
+				"navigationBarTitleText": "房源详情"
+			}
+		}
+        ,{
+            "path" : "pages/jingjirenjiaru/jingjirenjiaru",
+            "style" : {
+							"navigationBarTitleText": "经纪人"
+						}
+        }
+        ,{
+            "path" : "pages/mianfeirenzheng/mianfeirenzheng",
+            "style" : {
+							"navigationBarTitleText": "免费认证"
+						}
+				}
+				,{
+				    "path" : "pages/mianfeirenzheng/mianfeirenzheng2",
+				    "style" : {
+							"navigationBarTitleText": "免费认证"
+						}
+        }
+        ,{
+            "path" : "pages/wodeqianbao/wodeqianbao",
+            "style" : {
+							"navigationBarTitleText": "我的钱包"
+						}
+        }
+        ,{
+            "path" : "pages/wodeshiyou/wodeshiyou",
+            "style" : {
+							"navigationBarTitleText": "我的室友"
+						}
+        }
+        ,{
+            "path" : "pages/wodetuijian/wodetuijian",
+            "style" : {
+							"navigationBarTitleText": "我的推荐"
+						}
+        },{
+            "path" : "pages/fangke-yuyue-manage/wodeyuyue",
+            "style" : {
+							"navigationBarTitleText": "我的预约"
+						}  
+        }
+		,{
+		    "path" : "pages/wodeyuyue/fangdongyuyue",
+		    "style" : {
+							"navigationBarTitleText": "房东预约"
+						}
+		}
+        ,{
+            "path" : "pages/wuyejiaojie/wuyejiaojie",
+            "style" : {
+							"navigationBarTitleText": "物业交接"
+						}
+        }
+		,{
+		    "path" : "pages/wuyejiaojie/wuyejiaojie-fangke-list",
+		    "style" : {
+							"navigationBarTitleText": "物业交接列表"
+						}
+		}
+		,{
+		    "path" : "pages/wuyejiaojie/wuyejiaojie-fangdong-list",
+		    "style" : {
+							"navigationBarTitleText": "物业交接列表"
+						}
+		}
+		,{
+		    "path" : "pages/wuyejiaojie/wuyejiaojie-shenqing",
+		    "style" : {
+							"navigationBarTitleText": "物业交接--申请"
+						}
+		}
+        ,{
+            "path" : "pages/yezhutuoguan/yezhutuoguan",
+            "style" : {
+							"navigationBarTitleText": "业主托管"
+							}
+				},
+				{
+						"path" : "pages/yezhutuoguan/yezhutuoguan-liucheng",
+						"style" : {
+							"navigationBarTitleText": "业主托管流程"
+							}
+        },
+				{
+						"path" : "pages/zhengzhufabu/zhengzhufabu2",
+						"style" : {
+							"navigationBarTitleText": "房源发布"
+							}
+				},
+				{
+						"path" : "pages/zhaoshiyou/zhaoshiyou-xiangqing",
+						"style" : {
+							"navigationBarTitleText": "室友详情"
+							}
+				}
+        ,{
+            "path" : "pages/zhengzhufabu/wodefabu",
+            "style" : {
+							"navigationBarTitleText": "我的发布"
+						}
+        }
+        ,{
+            "path" : "pages/zhaunfa-to-qingniangongyu/zhaunfa-to-qingniangongyu",
+            "style" : {
+							"navigationBarTitleText": "转发到青年公寓"
+						}
+        }
+        ,{
+            "path" : "pages/zhiyefangdongruzhu/zhiyefangdongruzhu",
+            "style" : {
+								"navigationBarTitleText": "职业房东入驻"
+						}
+        }
+        ,{
+            "path" : "pages/login/login",
+            "style" : {
+							"navigationBarTitleText": "登录"
+						}
+        }
+		,{
+		    "path" : "pages/login/jump-role",
+		    "style" : {
+							"navigationBarTitleText": ""
+						}
+		}
+        ,{
+            "path" : "pages/register/register",
+            "style" : {
+								"navigationBarTitleText": "注册"
+						}
+        }
+        ,{
+            "path" : "pages/reset-password/reset-password",
+            "style" : {
+							"navigationBarTitleText": "重置密码"
+						}
+        }
+        ,{
+            "path" : "pages/zhiyefangdong/zhiyefangdong",
+            "style" : {
+				"navigationBarTitleText": "个人中心——职业房东",
+				"enablePullDownRefresh": true
+			}
+        }
+        
+        ,{
+            "path" : "pages/wodeyuyue/wodeyuyue",
+            "style" : {
+				"navigationBarTitleText": "我的预约"
+			}
+        }
+        
+        ,{
+            "path" : "pages/querenzufang/querenzufang",
+            "style" : {
+				"navigationBarTitleText": "确认租房"
+			}
+        }
+    
+        ,{
+            "path" : "pages/zhiyejingjiren/zhiyejingjiren",
+            "style" : {
+				"navigationBarTitleText": "个人中心——职业经纪人",
+				"enablePullDownRefresh": true
+			}
+        }
+    ],
+	//2.头部导航条默认样式
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "未设置标题",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	//3.底部选项卡(多页面切换)
+	"tabBar": {
+		"color": "#9D9D9D",
+		"selectedColor": "#333333",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [{
+			"pagePath": "pages/index/index",
+			"iconPath": "static/nav-bottom-left-0.png",
+			"selectedIconPath": "static/nav-bottom-left-1.png",
+			"text": "首页"
+		}, {
+			"pagePath": "pages/fangyuanshangchuan/fangyuanshangchuan",
+			"iconPath": "static/nav-bottom-center-0.png",
+			"selectedIconPath": "static/nav-bottom-center-1.png",
+			"text": "房源上传"
+		}, {
+			"pagePath": "pages/fangke-center/jump-center",
+			"iconPath": "static/nav-bottom-right-0.png",
+			"selectedIconPath": "static/nav-bottom-right-1.png",
+			"text": "我的"
+		}]
+	}
+}
