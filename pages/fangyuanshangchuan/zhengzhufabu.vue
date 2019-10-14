@@ -47,11 +47,9 @@
 							<!-- 省市区组件 -->
 							<provinceCityArea  @provinceCityAreaChange="getProvinceCityArea" :iniIndex="[8,0,0]">
 								<text class="select-btn" slot="show-province-city-area">
-								请选择
+								{{city}}
 								</text>
 							</provinceCityArea>
-							
-							
 				</view>
 				
 				<view class="grid-list grid-col-align-center">
@@ -112,27 +110,6 @@
 			<!-- 联系人 -->
 			<!-- <columnTitle columnTitle="联系人"/> -->
 			<view class="grid grid-col-4 base-msg">
-				<!-- <view class="grid-list grid-col-align-center grid-combine-col-2">
-						<input class="select-btn" type="text" value="" placeholder="请填写姓名"/>
-				</view>
-				<view class="grid-list grid-row-align-center grid-combine-col-2">
-						<label class="radio" :class="{active:gender==0}" @tap="checkedRadio(0)">
-							男士
-							<radio value="男士" />
-						</label>
-						<label class="radio" :class="{active:gender==1}" @tap="checkedRadio(1)">
-							女士
-							<radio value="女士" />
-						</label>
-				</view>
-				<view class="grid-list grid-col-align-center grid-combine-col-4">
-						<text class="select-title">您的身份</text>
-						<text class="select-btn">请选择</text>
-				</view>
-				<view class="grid-list grid-col-align-center  grid-combine-col-4">
-						<text class="select-title">为保护隐私，您的真实号码将被隐藏</text>
-						<text class="select-btn">123-****-789<text class="select-btn-reminder">已验证</text></text>
-				</view> -->
 				<view class="grid-list grid-col-align-left-center grid-combine-col-3">
 						<text class="select-title">中介勿扰</text>
 						<text class="select-btn">开启后将有效减少中介来电</text>
@@ -242,11 +219,13 @@
 				ditieIndex:[],
 				gender:0, //性别默认选项
 				u_id:'',
+				city:'请选择',
+				
 				imgSaveUrl:{},//图片存储路径参数(此值由后台赋值)
 				house_data:{    //房源上传当前数据的缓存
 				house:'',
 				metro_no:'',           //靠近几号线地铁
-				city:'',                 //省、市、区、、地址
+				// city:'请选择',                 //省、市、区、、地址
 				// state:'',                //1：整租，2：合租
 				img:''
 				},
@@ -356,6 +335,7 @@
 			},
 			//省市区选择
 			getProvinceCityArea(e){
+				this.city = e;
 				this.city = e;
 				console.log(e);
 			}

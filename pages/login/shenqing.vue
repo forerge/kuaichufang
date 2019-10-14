@@ -76,11 +76,13 @@
 				//console.log(data);
 			},
 			shenqing(e){
-				// console.log(this.roleSelectIndex[0]);
+				console.log(this.roleSelectIndex[0]);
+				var user_level = this.roleSelectIndex[0] == 0 ? 6 : this.roleSelectIndex[0]
+				// debugger;
 				uni.request({
 					url: this.serverApiUrl+'home/shenqing/shenqing', //请求url
 					method: 'POST',               //请求方式 
-					data: {id:this.u_id,name:e.detail.value.name,ma:e.detail.value.ma,level:this.roleSelectIndex[0]+1,img:this.imgSaveUrl,model:this.model},                     //传递的数据
+					data: {id:this.u_id,name:e.detail.value.name,ma:e.detail.value.ma,level:user_level,img:this.imgSaveUrl,model:this.model},                     //传递的数据
 					success: res => {   //成功执行回调函数
 						if(res.statusCode==200){
 							uni.redirectTo({

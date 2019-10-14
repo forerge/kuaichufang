@@ -164,7 +164,7 @@
 		<tuijianContentList :tuijianContent="tuijianContent" />
 		<!-- 底部 -->
 		<view class="grid grid-col-2 footer">
-			<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
+			<view class="grid-list grid-combine-col-2 grid-row-align-center">
 				<text class="right">电话咨询</text>
 			</view>
 		</view>

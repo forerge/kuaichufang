@@ -154,8 +154,10 @@
 				data: {},                     //传递的数据
 				success: res => {   //成功执行回调函数
 					if(res.statusCode==200){
+						console.log(res.data);
 						this.tuijianContent= res.data['house'];
 						this.banner = res.data['banner']
+						console.log(res.data);
 					}else{ 
 						// console.log(res);
 					}

@@ -66,7 +66,7 @@
 							<!-- 省市区组件 -->
 							<provinceCityArea  @provinceCityAreaChange="getProvinceCityArea" :iniIndex="[8,0,0]">
 								<text class="select-btn" slot="show-province-city-area">
-								请选择
+								{{city}}
 								</text>
 							</provinceCityArea>
 							
@@ -265,6 +265,7 @@
 				chuzuIndex:[],
 				gender:0, //性别默认选项
 				u_id:'',
+				city:'请选择',
 				imgSaveUrl:{},//图片存储路径参数(此值由后台赋值)
 				house_data:{    //房源上传当前数据的缓存
 				house:'',
