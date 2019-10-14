@@ -42,11 +42,12 @@
 			<view class="house-left">
 				<image class="img" :src="serverImgUrl+'nav010.png'" mode="widthFix"></image>
 			</view>
-			<view class="house-center">
+			<view class="house-center" @click="zhaoshiyou">
 				<view class="house-c-top" >找室友</view>
 				<view class="house-c-bottom">找一起住的人，分摊房租</view>
 			</view>
-			<navigator url="../zhaoshiyou/zhaoshiyou" hover-class="none">
+			<!-- <navigator url="../zhaoshiyou/zhaoshiyou" hover-class="none"> -->
+			<navigator url="" hover-class="none">
 			<view class="house-right" >＞</view>
 				</navigator>
 		</view>
@@ -100,6 +101,11 @@
 					});
 				// }
 			},
+			zhaoshiyou(){
+				uni.navigateTo({
+				    url: "../login/empty?message="+'目前暂不开放'
+				});
+			}
 		}
 	}
 </script>

@@ -44,8 +44,9 @@
 				<text>合租</text>
 			</view>
 		</view>
-		<view class="grid-list">
-			<navigator url="../zhaoshiyou/zhaoshiyou" hover-class="none">
+		<view class="grid-list" @click="zhaoshiyou">
+			<navigator  hover-class="none">
+			<!-- <navigator url="../zhaoshiyou/zhaoshiyou" hover-class="none"> -->
 			<image :src="serverImgUrl+'nav010.png'" ></image>
 			<text>找室友</text>
 			 </navigator>
@@ -271,6 +272,11 @@
 					});
 				}
 			},
+			zhaoshiyou(){
+				uni.navigateTo({
+				    url: "../login/empty?message="+'目前暂不开放'
+				});
+			}
 		}, 
 	
 	}
