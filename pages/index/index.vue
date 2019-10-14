@@ -257,7 +257,7 @@
 					uni.navigateTo({
 					    url: '../login/login'
 					});
-				}else if(uni.getStorageSync('weijia_pro')['u_two'] != 1 || uni.getStorageSync('weijia_pro')['u_three'] != 1 || uni.getStorageSync('weijia_pro')['u_four'] != 1 ){
+				}else if(uni.getStorageSync('weijia_pro')['u_two'] != 1 && uni.getStorageSync('weijia_pro')['u_three'] != 1 && uni.getStorageSync('weijia_pro')['u_four'] != 1 ){
 					uni.navigateTo({
 					    url: "../login/shenqing"
 					});

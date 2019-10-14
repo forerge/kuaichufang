@@ -80,6 +80,7 @@
 			return {
 				//获取自定义$commonConfig对象中的服务器地址
 				serverImgUrl:this.$commonConfig.serverImgUrl,
+				serverApiUrl:this.$commonConfig.serverApiUrl,
 				curIndex:0, //tab索引
 				//我的发布
 				tuijianContent:[],
@@ -135,7 +136,9 @@
 				},                     //传递的数据
 				success: res => {   //成功执行回调函数
 					if(res.statusCode==200){
-						this.tuijianContent = res.data;
+						
+						console.log('lailia')
+						// this.tuijianContent = res.data;
 					}
 				},
 				fail: () => {},
