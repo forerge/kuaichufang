@@ -73,15 +73,15 @@
 		}, 
 		methods: {
 			zhengzu(){
-				if(uni.getStorageSync('weijia_role') == 1){
-					uni.navigateTo({
-						url: '../login/empty?message='+'亲！当前角色不能操作此功能！'
-					});
-				}else{
+				// if(uni.getStorageSync('weijia_role') == 1){
+				// 	uni.navigateTo({
+				// 		url: '../login/empty?message='+'亲！当前角色不能操作此功能！'
+				// 	});
+				// }else{
 					uni.navigateTo({
 						url: './zhengzhufabu'
 					});
-				}
+				// }
 				
 			},
 			hezu(){
@@ -90,15 +90,15 @@
 				});
 			},
 			weituo(){
-				if(uni.getStorageSync('weijia_status') == false){
-					uni.navigateTo({
-					    url: '../login/login'
-					});
-				}else{
+				// if(uni.getStorageSync('weijia_status') == false){
+				// 	uni.navigateTo({
+				// 	    url: '../login/login'
+				// 	});
+				// }else{
 					uni.navigateTo({
 						url: './fangdongweituo'
 					});
-				}
+				// }
 			},
 		}
 	}
