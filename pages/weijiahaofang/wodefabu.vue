@@ -3,73 +3,38 @@
 		
 		<view class="grid grid-col-2 tap">
 			<view class="grid-list grid-row-align-center">
-				<text class="text" @click='toShow(0)' :class="{active:curIndex==0}">已租</text>
+				<text class="text" @click='toShow(2)' :class="{active:curTabIndex==2}">已租</text>
 			</view>
 			<view class="grid-list grid-row-align-center">
-				<text class="text" @click='toShow(1)' :class="{active:curIndex==1}">空闲</text>
+				<text class="text" @click='toShow(1)' :class="{active:curTabIndex==1}">空闲</text>
 			</view>
 		</view>
-		
-		<block v-for="(val,index) in tuijianContent" :key="index">
-		<view class="grid grid-col-2 tuijian-content-list" :class="{active:curIndex==0}">
-			<view class="grid-list grid-combine-col-2 grid-row-align-center">
-				<navigator class="img-navigator" url="../fangyuanxiangqing/fangyuanxiangqing" hover-class="none">
-				 <image class="img" :src="val.imgUrl" ></image>
-				 <text class="msg" :class="{active:curIndex==0}">已租</text>
-				  </navigator> 
-				<view class="description">
-					<navigator url="../fangyuanxiangqing/fangyuanxiangqing" hover-class="none">
-					<view class="v1">{{val.title}}</view>
-					<view class="v2">
-						<text class="t1">{{val.area}}</text>
-						 <text class="t2">{{val.floor}}</text> 
-						 <text class="t3">{{val.towards}}</text> <br>
-						 <text class="t4">{{val.subwayDistance}}</text>
-					</view>
-					<view class="v3">
-						<text class="t1">{{val.pledge}}</text>
-						 <text class="t2">{{val.subway}}</text> 
-						 <text class="t3">{{val.veranda}}</text>
-					</view>
-					<view class="v4">
-						<text class="t1">{{val.monthPrice}}</text>
-						 <text class="t2">元/月</text>
-					</view>
-					 </navigator>
+		<block v-if="have">
+			<view class="grid grid-col-2 xiaoqu-list" v-for="(val,index) in tuijianContent" :key="index">
+				<view class="grid-list grid-combine-col-2 grid-row-align-center title" >
+					{{index}}
 				</view>
-			</view> 
-		</view>
+				<block v-for="(v,k) in val" :key="k">
+					
+					<view class="grid-list grid-combine-col-2 description" v-if="curTabIndex == v.h_level">
+						<view class="address">
+							{{v.h_addr}}
+						</view>
+						<view class="info grid-row-align-space-around-center">
+							<text>{{v.h_state}}</text>
+							<text>{{v.h_space}}m2</text>
+							<block v-if="v.h_level == 1"><text @click="change_level(v.h_id,2,index,k)" class="btn">下架</text></block>
+							<block v-if="v.h_level == 2"><text @click="change_level(v.h_id,1,index,k)" class="btn">重新发布</text></block>
+						</view>
+					</view>
+				</block>
+			</view>
 		</block>
-		
-		<block v-for="(val,index) in tuijianContent" :key="index">
-		<view class="grid grid-col-2 tuijian-content-list" :class="{active:curIndex==1}">
-			<view class="grid-list grid-combine-col-2 grid-row-align-center">
-				<navigator class="img-navigator" url="../fangyuanxiangqing/fangyuanxiangqing" hover-class="none">
-				 <image class="img" :src="val.imgUrl" ></image>
-				  <text class="msg" :class="{active:curIndex==0}">空闲</text>
-				  </navigator>
-				<view class="description">
-					<navigator url="../fangyuanxiangqing/fangyuanxiangqing" hover-class="none">
-					<view class="v1">{{val.title}}</view>
-					<view class="v2">
-						<text class="t1">{{val.area}}</text>
-						 <text class="t2">{{val.floor}}</text> 
-						 <text class="t3">{{val.towards}}</text> <br>
-						 <text class="t4">{{val.subwayDistance}}</text>
-					</view>
-					<view class="v3">
-						<text class="t1">{{val.pledge}}</text>
-						 <text class="t2">{{val.subway}}</text> 
-						 <text class="t3">{{val.veranda}}</text>
-					</view>
-					<view class="v4">
-						<text class="t1">{{val.monthPrice}}</text>
-						 <text class="t2">元/月</text>
-					</view>
-					 </navigator>
-				</view>
-			</view> 
-		</view>
+		<block v-else>
+			<view class="footer">
+				<image class="img" :src="serverImgUrl+'no-contract.png'" mode="widthFix"></image>
+				<view class="text">亲！空空如也！</view>
+			</view>
 		</block>
 	</view>
 </template> 
@@ -81,50 +46,12 @@
 				//获取自定义$commonConfig对象中的服务器地址
 				serverImgUrl:this.$commonConfig.serverImgUrl,
 				serverApiUrl:this.$commonConfig.serverApiUrl,
-				curIndex:0, //tab索引
-				//我的发布
-				tuijianContent:[],
+				curTabIndex:1, //tab索引
+				tuijianContent:'',
+				level:1,
+				have:0
 			};
 		},
-		created(){
-				console.log(this.serverImgUrl);
-				this.tuijianContent=[
-					{
-					imgUrl:this.serverImgUrl+'static/images/tuijian-thumbnail.png',
-					title:'合租.天通苑北二区 3居室.1厅.1卫',
-					area:'15m²',
-					floor:'12/18层',
-					towards:'朝南',
-					subwayDistance:'距5号线800m',
-					pledge:'押一付一',
-					subway:'离地铁近',
-					veranda:'有阳台',
-					monthPrice:'2300'
-					},{
-					imgUrl:this.serverImgUrl+'static/images/tuijian-thumbnail.png',
-					title:'合租.天通苑北二区 3居室.1厅.1卫',
-					area:'15m²',
-					floor:'12/18层',
-					towards:'朝南',
-					subwayDistance:'距5号线800m',
-					pledge:'押一付一',
-					subway:'离地铁近',
-					veranda:'有阳台',
-					monthPrice:'2300'
-					},{
-					imgUrl:this.serverImgUrl+'static/images/tuijian-thumbnail.png',
-					title:'合租.天通苑北二区 3居室.1厅.1卫',
-					area:'15m²',
-					floor:'12/18层',
-					towards:'朝南',
-					subwayDistance:'距5号线800m',
-					pledge:'押一付一',
-					subway:'离地铁近',
-					veranda:'有阳台',
-					monthPrice:'2300'
-					}
-				]
-			},
 		onLoad(e) {
 			this.role = e.role;
 			uni.request({
@@ -132,13 +59,17 @@
 				method: 'POST',               //请求方式 
 				data: {
 					uid:uni.getStorageSync('weijia_pro')['u_id'],
-					role:e.role
+					level:1
 				},                     //传递的数据
 				success: res => {   //成功执行回调函数
 					if(res.statusCode==200){
-						
-						console.log('lailia')
-						// this.tuijianContent = res.data;
+						if(res.data == 0){
+							this.have = 0;
+						}else{
+							this.have = 1;
+							this.tuijianContent = res.data;
+						}
+						console.log(res.data)
 					}
 				},
 				fail: () => {},
@@ -147,9 +78,56 @@
 		},
 		methods:{
 			//tab切换
-			toShow:function(index){
-						this.curIndex=index;	
-					}
+			toShow(obj){
+				this.level = obj
+				this.curTabIndex = obj
+				uni.request({
+					url: this.serverApiUrl+'home/house/kuai_wodefabu', //请求url
+					method: 'POST',               //请求方式 
+					data: {
+						uid:uni.getStorageSync('weijia_pro')['u_id'],
+						level:obj
+					},                     //传递的数据
+					success: res => {   //成功执行回调函数
+						if(res.statusCode==200){
+							console.log(res.data)
+							if(res.data == 0){
+								this.have = 0;
+							}else{
+								this.have = 1;
+								this.tuijianContent = res.data;
+							}
+							
+							
+						}
+					},
+					fail: () => {},
+					complete: () => {}
+				});
+			},
+			change_level(hid,level,index,k){
+				this.tuijianContent[index][k]['h_level'] = level;
+				uni.request({
+					url: this.serverApiUrl+'home/house/kuai_wodefabu_change_level', //请求url
+					method: 'POST',               //请求方式 
+					data: {
+						hid:hid,
+						level:level
+					},                     //传递的数据
+					success: res => {   //成功执行回调函数
+						if(res.statusCode==200){
+							console.log(res.data)
+							if(res.data == 0){
+								this.have = 0;
+							}else{
+								
+							}
+						}
+					},
+					fail: () => {},
+					complete: () => {}
+				});
+			}
 		}
 	}
 </script>
@@ -162,9 +140,7 @@
 				color:#9B9B9B;
 				font-size: $uni-font-size-lg;
 				padding-bottom:6px;
-				border-bottom-width:1px;
-				border-bottom-style:solid;
-				border-bottom-color:#fff;
+				border:1px solid #fff;
 				&.active{
 					color:#333;
 					border-bottom-color:#FDB472;
@@ -173,72 +149,51 @@
 			
 		}
 	}
-	.grid.tuijian-content-list{
-		display: none;
-		&.active{
-			display: block;
-		}
-		width:94%;
-		margin:0 auto;
-		margin-top:15px;
+	.grid.xiaoqu-list{
+		width:90%;
+		margin:1em auto;
+		border:1px solid #ccc;
+		box-shadow: 0 2px 5px #ccc;
+		border-radius: 15px;
 		.grid-list{
-			height:133px;
-			padding:1em;
-			box-shadow: 0 2px 5px #ccc;
-			.img-navigator{
-				display: block;
-				position: relative;
-				width:35%;
-				height:100%;
-				.img{
-					height:100%;
-					width:100%;
-					border-radius: 15rpx;
-				}
-				.msg{
-					position: absolute;
-					left:0;
-					top:1em;
-					font-size:$uni-font-size-sm;
-					background: #F97F36;
-					padding:3px 12px;
-					color:#fff;
-				}
-				.active.msg{
-					background:#DF1314 ;
-				}
+			margin-top:0.5em;
+			&.title{
+				padding:0.2em 0;
+				color:#333333;
+				font-size:1.1em;
 			}
-			.description{
-				padding-left:1em;
-				width:65%;
-			}
-			.description view{
-				margin-bottom:3px;
-				overflow: hidden;
-				text-overflow:ellipsis;
-				white-space: nowrap;
-			}
-			.description .v2{
-				color:#C1C1C1;
+			&.description{
+				padding-bottom:1em;
 				font-size:$uni-font-size-sm;
-			}
-			.description .v2 text{
-				margin-right:1em;
-			}
-			.description .v3{
-				color:#6B6B6B;
-				font-size:$uni-font-size-sm;
-			}
-			.description .v3 text{
-				margin-right:1em;
-			}
-			.description .v3 .t1{
-				color:#7AE5BB;
-			}
-			.description .v4{
-				color:#FC8B22;
-				font-size:$uni-font-size-sm;
+				.address{
+					margin-left:1em;
+				}
+				.info{
+					margin-top:5px;
+					.btn{
+						padding:3px 10px;
+						border:1px solid #ccc;
+						border-radius: 10px;
+						&.active{
+							color:#09BB07;
+							border:1px solid #09BB07;
+						}
+					}
+				}
 			}
 		}
 	}
+	.footer{
+		.img{
+			display: block;
+			width:30%;
+			margin:100rpx auto 0;
+		}
+		.text{
+			line-height:90px;
+			text-align: center;
+			color:#F98747;
+		}
+	}
+	
 </style>
