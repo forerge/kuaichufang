@@ -52,8 +52,7 @@
 				have:0
 			};
 		},
-		onLoad(e) {
-			this.role = e.role;
+		onLoad() {
 			uni.request({
 				url: this.serverApiUrl+'home/house/kuai_wodefabu', //请求url
 				method: 'POST',               //请求方式 
@@ -127,7 +126,34 @@
 					fail: () => {},
 					complete: () => {}
 				});
-			}
+			},
+			onPullDownRefresh() {
+				uni.request({
+					url: this.serverApiUrl+'home/house/kuai_wodefabu', //请求url
+					method: 'POST',               //请求方式 
+					data: {
+						uid:uni.getStorageSync('weijia_pro')['u_id'],
+						level:this.level
+					},                     //传递的数据
+					success: res => {   //成功执行回调函数
+						if(res.statusCode==200){
+							if(res.data == 0){
+								this.have = 0;
+							}else{
+								this.have = 1;
+								this.tuijianContent = res.data;
+							}
+							console.log(res.data)
+						}
+					},
+					fail: () => {},
+					complete: () => {}
+				});
+				// console.log(123456);
+				setTimeout(function () {
+					uni.stopPullDownRefresh();
+				}, 2000);
+			},
 		}
 	}
 </script>

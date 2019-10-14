@@ -18,7 +18,8 @@
 		{
 			"path": "pages/weijiahaofang/wodefabu",
 			"style": {
-				"navigationBarTitleText": "我的发布"
+				"navigationBarTitleText": "我的发布",
+				 "enablePullDownRefresh": true
 			}
 		}, 
 		{
