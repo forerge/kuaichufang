@@ -74,7 +74,7 @@
 		}, 
 		methods: {
 			zhengzu(){
-				if(uni.getStorageSync('weijia_pro')['u_two'] != 1 || uni.getStorageSync('weijia_pro')['u_three'] != 1 || uni.getStorageSync('weijia_pro')['u_four'] != 1 ){
+				if(uni.getStorageSync('weijia_pro')['u_two'] != 1 && uni.getStorageSync('weijia_pro')['u_three'] != 1 && uni.getStorageSync('weijia_pro')['u_four'] != 1 ){
 					uni.navigateTo({
 						url: '../login/empty?message='+'亲！当前角色不能操作此功能！'
 					});
@@ -86,7 +86,7 @@
 				
 			},
 			hezu(){
-				if(uni.getStorageSync('weijia_pro')['u_two'] != 1 || uni.getStorageSync('weijia_pro')['u_three'] != 1 || uni.getStorageSync('weijia_pro')['u_four'] != 1 ){
+				if(uni.getStorageSync('weijia_pro')['u_two'] != 1 && uni.getStorageSync('weijia_pro')['u_three'] != 1 && uni.getStorageSync('weijia_pro')['u_four'] != 1 ){
 					uni.navigateTo({
 						url: '../login/empty?message='+'亲！当前角色不能操作此功能！'
 					});
