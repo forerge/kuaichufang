@@ -49,10 +49,10 @@
 				<image  class="img" :src="serverImgUrl+'fangke-gerenfuwu08.png'"></image>
 				<text class="text">保洁服务</text>
 			</view>
-			<view class="grid-list grid-col-align-center" @click="daoqijiaozu">
+			<!-- <view class="grid-list grid-col-align-center" @click="daoqijiaozu">
 				<image  class="img" :src="serverImgUrl+'fangke-gerenfuwu09.png'"></image>
 				<text class="text">到期交租</text>
-			</view>
+			</view> -->
 			<!-- <view class="grid-list grid-col-align-center">
 				<image  class="img" :src="serverImgUrl+'fangke-gerenfuwu010.png'"></image>
 				<text class="text">找室友</text>
@@ -61,7 +61,7 @@
 				<image  class="img" :src="serverImgUrl+'fangke-gerenfuwu011.png'"></image>
 				<text class="text">我的认证</text>
 			</view>
-			<view class="grid-list grid-col-align-center">
+			<view class="grid-list grid-col-align-center" @click="zhangdan">
 				<image  class="img" :src="serverImgUrl+'fangke-gerenfuwu012.png'"></image>
 				<text class="text">账单查询</text>
 			</view>
@@ -126,7 +126,7 @@
 			},
 			renzheng(){
 				uni.navigateTo({
-				    url: '../woderenzheng/woderenzheng'
+				    url: '../wode/woderenzheng'
 				});
 			},
 			qianbao(){
@@ -152,6 +152,11 @@
 			wodefabu(){
 				uni.navigateTo({
 				    url: '../wode/wodefabu'
+				});
+			},
+			zhangdan(){
+				uni.navigateTo({
+				    url: '../wode/zhangdanchaxun'
 				});
 			}
 				

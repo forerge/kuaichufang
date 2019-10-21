@@ -3,7 +3,7 @@
 		<view class="column-title" :class="{borderTopHide:borderTopHide}" :style="{color:color,backgroundColor: backgroundColor,borderTopColor:borderTopColor||'#E7E7E7'}">
 			<text>{{columnTitle}}</text>
 			<text class="titleReminder">{{columnTitleReminder||''}}</text>
-			<input type="text" class="input" :class="{inputShow:inputShow}" :placeholder="inputPlaceholder" placeholder-style="color:#AAAAAA;font-size:22rpx;" />
+			<input type="text" v-model="inputVal" class="input" :class="{inputShow:inputShow}" :placeholder="inputPlaceholder" placeholder-style="color:#AAAAAA;font-size:22rpx;" />
 		</view>
 	</view>
 </template>
@@ -19,7 +19,12 @@
 			'borderTopColor',
 			'inputShow',
 			'inputPlaceholder',
-			]
+			],
+			data(){
+				return{
+					inputVal:''
+				}
+			}
 	}
 </script>
 

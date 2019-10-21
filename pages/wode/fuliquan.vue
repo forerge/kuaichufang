@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<view  class="header" v-if='have == 0'>
+		<view  class="empty" v-if='have'>
 			<image class="img" :src="serverImgUrl+'no-contract.png'" mode="widthFix"></image>
 			<view class="text">亲你目前暂无预约</view>
 		</view>
@@ -61,6 +61,7 @@
 				curIndex:1,
 				yong:true,
 				fulijuan:'',
+				have:true
 			};
 		},
 		methods:{
@@ -81,10 +82,10 @@
 				success: res => {   //成功执行回调函数
 					if(res.statusCode==200){
 						if(res.data == 0){
-							this.have = 0;
+							this.have = true;
 						}else{
 							this.fulijuan= res.data;
-							this.have = 1
+							this.have = false
 						}
 						console.log(this.fulijuan);
 					}else{ 
@@ -100,6 +101,18 @@
 </script>
 
 <style lang="scss">
+	.empty{
+		.img{
+			display: block;
+			width:30%;
+			margin:100rpx auto 0;
+		}
+		.text{
+			line-height:90px;
+			text-align: center;
+			color:#F98747;
+		}
+	}
 .header{
 	width:90%;
 	margin: 0 auto;

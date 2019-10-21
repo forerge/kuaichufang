@@ -3,36 +3,50 @@
 		 <!-- 水电tab -->
 		 <view class="grid grid-col-2 tab">
 			 <view class="grid-list grid-row-align-center">
-			 	<text class="text"  @click='toShow(5)' :class="{active:curIndex==5}">水费</text>
-			 </view>
-			 <view class="grid-list grid-row-align-center">
-			 	<text class="text" @click='toShow(6)' :class="{active:curIndex==6}">电费</text>
+			 	<text class="text">保洁服务</text>
 			 </view>
 		 </view>
 		 <view class="grid grid-col-2 hetong" >
 		 	<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
-		 		<text class="text1">缴纳金额</text>                                                            
-			    <input  class="text2" type="text" @input="jine" placeholder="请输入金额"/>
+		 		<text class="text1">订单状态</text>                                                            
+				<text class="text2">{{tuijianContent.status}}</text>
 		 	</view>
 			<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
+				<text class="text1">单位金额</text>                                                            
+				<text class="text2">{{tuijianContent.clear}}元/㎡</text>
+			</view>
+			<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
+				<text class="text1">面积</text>                                                            
+				<text class="text2">{{tuijianContent.h_space}}㎡</text>
+			</view>
+			<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
+				<text class="text1">应缴金额</text>                                                            
+			    <text class="text2">{{tuijianContent.money}}</text>
+			</view>
+			<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
 				<text class="text1">缴纳单位</text>
-				<text class="text2">**供电局</text>   
+				<text class="text2">唯家</text>   
 			</view>
 			<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
 				<text class="text1">缴纳户名</text>
-				<text class="text2">{{tuijianContent.username  }}</text>  
+				<text class="text2">{{tuijianContent.username}}</text>  
 			</view>
 			<view class="grid-list grid-combine-col-2 grid-row-align-space-between-center">
 				<text class="text1">住址信息</text>
 				<text class="text2">{{tuijianContent.h_qv}}{{tuijianContent.h_addr}}</text>                                                      
 			</view>
-			<view class="grid-list grid-combine-col-2 grid-row-align-left-center price">
-				<text class="text1">金额： </text><text class="text2">{{money}}</text>  
-			</view>
 		 </view>
-		 <view style="padding:1em 0;background:#fff;">
-			<view class="big_button_yellow" @click="jiaofei" >立即缴费</view>
-		 </view>
+		 <block v-if="tuijianContent.o_status == 2">
+			 <view style="padding:1em 0;background:#fff;">
+				<view class="big_button_yellow" @click="fukuan(tuijianContent.o_id)" >确认支付</view>
+			 </view>
+		 </block>
+		 <block v-if="tuijianContent.o_status == 1">
+			 <view style="padding:1em 0;background:#fff;">
+				<view class="big_button_yellow" @click="chexiao(tuijianContent.o_id)" >撤销</view>
+			 </view>
+		 </block>
+		 
 	</view>
 </template>
 
@@ -45,42 +59,51 @@
 				//获取自定义$commonConfig对象中的服务器地址
 				serverImgUrl:this.$commonConfig.serverImgUrl,
 				serverApiUrl:this.$commonConfig.serverApiUrl,
-				curIndex:5, //tab索引    水电费类型
-				money:'',
-				h_id:'',
 				//我的收藏
 				tuijianContent:[],
+				o_id:''
 			};
 		},
 		methods:{
-			//tab切换
-			toShow:function(index){
-				this.curIndex=index;	
-			},
-			jine(e){
-				this.money = e.detail.value;
-			},
-			jiaofei(){
+			fukuan(o_id){
 				uni.request({
-					url: this.serverApiUrl+'home/order/kuai_jiaoshuidian', //请求url
+					url: this.serverApiUrl+'home/order/qk_baojie_jiaofei', //请求url
 					method: 'POST',               //请求方式 
 					data: {
-						ou_id:uni.getStorageSync('weijia_pro')['u_id'],
-						o_leixing:this.curIndex,
-						o_money:this.money,
-						oh_id:this.h_id
+						o_id:this.o_id
 					},                     //传递的数据
 					success: res => {   //成功执行回调函数
 						if(res.statusCode==200){
 							if(res.data == 1){
 								uni.redirectTo({
-								    url: '../login/empty?message='+'缴费成功！'
+								    url: '../login/empty?message='+'付款成功！'
 								});
 							}
 						}else{ 
 							// console.log(res);
 						}
-						
+					},
+					fail: () => {},
+					complete: () => {}
+				});
+			},
+			chexiao(o_id){
+				uni.request({
+					url: this.serverApiUrl+'home/order/qk_baojie_chexiao', //请求url
+					method: 'POST',               //请求方式 
+					data: {
+						o_id:this.o_id
+					},                     //传递的数据
+					success: res => {   //成功执行回调函数
+						if(res.statusCode==200){
+							if(res.data == 1){
+								uni.redirectTo({
+								    url: '../login/empty?message='+'撤销成功！'
+								});
+							}
+						}else{ 
+							// console.log(res);
+						}
 					},
 					fail: () => {},
 					complete: () => {}
@@ -88,24 +111,23 @@
 			}
 		},
 		onLoad(e){
-			this.h_id = e.h_id;
+			this.o_id = e.o_id;
 			uni.request({ 
-				url: this.serverApiUrl+'home/house/kuai_shuidian', //请求url
+				url: this.serverApiUrl+'home/order/kuai_baojie_detail', //请求url
 				method: 'POST',               //请求方式 
 				data: {
-					u_id:uni.getStorageSync('weijia_pro')['u_id'],
-					h_id:this.h_id, 
-					o_leixing:this.curIndex,
-					o_moeny:this.money,
+					o_id:this.o_id
 				},                     //传递的数据
 				success: res => {   //成功执行回调函数
 					if(res.statusCode==200){
-						console.log(res.data);
-						this.tuijianContent= res.data;
+						this.tuijianContent= JSON.parse(res.data);
+						console.log(this.tuijianContent)
+						console.log(this.tuijianContent['h_space'])
+						// this.tuijianContent= res.data;
+						// this.banner = res.data['banner']
 					}else{ 
 						// console.log(res);
 					}
-					
 				},
 				fail: () => {},
 				complete: () => {}

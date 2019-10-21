@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<columnTitle :columnTitle="columnTitle" :borderTopHide="titleBorderTopHide" :borderTopColor="borderTopColor" :inputShow="inputShow" :inputPlaceholder="inputPlaceholder" />
+		<columnTitle ref="columnTitle" :columnTitle="columnTitle" :borderTopHide="titleBorderTopHide" :borderTopColor="borderTopColor" :inputShow="inputShow" :inputPlaceholder="inputPlaceholder" />
 			<view class="textareaColumnFrame">
 				<textarea class="textarea" name="content" v-model="textareaVal"  :placeholder="placeholder" placeholder-style="font-size:12px;color:#A8A8A8;"/>
 			</view>

@@ -15,7 +15,7 @@
 					{{index}}
 				</view>
 				<block v-for="(v,k) in val" :key="k">
-					<view class="grid-list grid-combine-col-2 description" v-if="state == v.h_state" @click="xuanzhong">
+					<view class="grid-list grid-combine-col-2 description" @click="xuanzhong(v.h_id)">
 						<view class="address">
 							{{v.h_addr}}
 						</view>
@@ -43,14 +43,18 @@
 				tuijianContent:'',
 				have:0,
 				state:'整租',
+				fuwu_leixing:''          //1：房源转青年公寓，2：交水电费，3：维修服务，4：保洁服务
 			};
 		},
-		onLoad() {
+		onLoad(e) {
+			this.fuwu_leixing = e.level;
 			uni.request({
 				url: this.serverApiUrl+'home/house/kuai_fuwu', //请求url
 				method: 'POST',               //请求方式 
 				data: {
 					uid:uni.getStorageSync('weijia_pro')['u_id'],
+					state:1,
+					fuwu_leixing:this.fuwu_leixing
 				},                     //传递的数据
 				success: res => {   //成功执行回调函数
 					if(res.statusCode==200){
@@ -60,7 +64,7 @@
 							this.have = 1;
 							this.tuijianContent = res.data;
 						}
-						console.log(res.data)
+						// console.log(res.data)
 					}
 				},
 				fail: () => {},
@@ -70,25 +74,15 @@
 		methods:{
 			//tab切换
 			toShow(obj){
-				this.curTabIndex = obj
-				console.log(123)
-				if(obj == 1){
-					this.tuijianContent = '';
-					this.tuijianContent = this.test;
-					this.state = '整租';
-					this.curTabIndex = obj
-				}else{
-					this.tuijianContent = '';
-					this.tuijianContent = this.test;
-					this.state == '合租';
-					this.curTabIndex = obj
-				}
-				this.curTabIndex = obj
+				this.curTabIndex = obj;
+				this.tuijianContent = '';
 				uni.request({
 					url: this.serverApiUrl+'home/house/kuai_fuwu', //请求url
-					method: 'POST',               //请求方式 
+					method: 'POST',               //请求方式
 					data: {
 						uid:uni.getStorageSync('weijia_pro')['u_id'],
+						state:this.curTabIndex,
+						fuwu_leixing:this.fuwu_leixing
 					},                     //传递的数据
 					success: res => {   //成功执行回调函数
 						if(res.statusCode==200){
@@ -105,33 +99,55 @@
 					complete: () => {}
 				});
 			},
+			xuanzhong(hid){
+				if(this.fuwu_leixing == 1){
+					uni.navigateTo({
+					    url: './qingniangongyu?h_id='+hid
+					});
+				}else if(this.fuwu_leixing == 2){
+					uni.navigateTo({
+					    url: './shuidianfei?h_id='+hid
+					});
+				}else if(this.fuwu_leixing == 3){
+					uni.navigateTo({
+					    url: './weixiu?h_id='+hid
+					});
+				}else if(this.fuwu_leixing == 4){
+					uni.navigateTo({
+					    url: './baojie-list?h_id='+hid
+					});
+				}
+				
+			}
+		},
+			onPullDownRefresh() {
+				curTabIndex = 1;
+				this.tuijianContent = '';
+				uni.request({
+					url: this.serverApiUrl+'home/house/kuai_fuwu', //请求url
+					method: 'POST',               //请求方式 
+					data: {
+						uid:uni.getStorageSync('weijia_pro')['u_id'],
+						state:this.curTabIndex
+					},                     //传递的数据
+					success: res => {   //成功执行回调函数
+						if(res.statusCode==200){
+							if(res.data == 0){
+								this.have = 0;
+							}else{
+								this.have = 1;
+								this.tuijianContent = res.data;
+							}
+							console.log(res.data)
+						}
+					},
+					fail: () => {},
+					complete: () => {}
+				});
+				setTimeout(function () {
+					uni.stopPullDownRefresh();
+				}, 2000);
 			
-			// onPullDownRefresh() {
-			// 	uni.request({
-			// 		url: this.serverApiUrl+'home/house/kuai_wodefabu', //请求url
-			// 		method: 'POST',               //请求方式 
-			// 		data: {
-			// 			uid:uni.getStorageSync('weijia_pro')['u_id'],
-			// 			level:this.level
-			// 		},                     //传递的数据
-			// 		success: res => {   //成功执行回调函数
-			// 			if(res.statusCode==200){
-			// 				if(res.data == 0){
-			// 					this.have = 0;
-			// 				}else{
-			// 					this.have = 1;
-			// 					this.tuijianContent = res.data;
-			// 				}
-			// 				console.log(res.data)
-			// 			}
-			// 		},
-			// 		fail: () => {},
-			// 		complete: () => {}
-			// 	});
-			// 	setTimeout(function () {
-			// 		uni.stopPullDownRefresh();
-			// 	}, 2000);
-			// },
 		}
 	}
 </script>

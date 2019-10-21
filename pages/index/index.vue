@@ -140,6 +140,7 @@
 			console.log(uni.getStorageSync('weijia_status'));
 			console.log(uni.getStorageSync('weijia_role'));
 			console.log(uni.getStorageSync('weijia_pro')['u_tname']);
+			console.log(uni.getStorageSync('weijia_pro')['u_id']);
 			
 			if(uni.getStorageSync('weijia_status') == true){
 				this.role = uni.getStorageSync('weijia_role')

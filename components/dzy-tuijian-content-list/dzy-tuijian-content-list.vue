@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<block v-for="(val,index) in tuijianContent" :key="index">
-		<navigator class="grid grid-col-2 tuijian-content-list" :url="'../fangyuanxiangqing/fangyuanxiangqing?id='+val.h_id">
+		<navigator class="grid grid-col-2 tuijian-content-list" :url="'../weijiahaofang/fangyuanxiangqing?id='+val.h_id">
 			<view class="grid-list grid-combine-col-2 grid-row-align-center">
 					<view class="img-navigator"  hover-class="none">
 						<image class="img" :src="val.h_uploads[0]" ></image>
